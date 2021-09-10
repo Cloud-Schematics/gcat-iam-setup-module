@@ -20,6 +20,7 @@ variable access_groups {
                     })
                 })
             )
+            invite_users = list(string) # Users to invite to the access group
         })
     )
     default     = [
@@ -51,6 +52,7 @@ variable access_groups {
                     roles = ["Editor","Manager"]
                 },
             ]
+            invite_users = [ "test@test.test" ]
         },
         {
             name        = "admin_default"
@@ -80,6 +82,7 @@ variable access_groups {
                     roles = ["Editor","Manager"]
                 },
             ]
+            invite_users = [ "test@test.test" ]
         }
     ]
 }
