@@ -1,6 +1,6 @@
 # GCAT IAM Access Policies
 
-This module creates any number if IAM Access Groups, and IAM Access Policies for those groups. It also allows users to invite users to the account and add them to an access group
+This module creates any number if IAM Access Groups, and IAM Access Policies for those groups. It also allows users to invite users to the account and add them to any of the access groups created.
 
 ## Variables
 
