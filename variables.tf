@@ -54,7 +54,22 @@ variable access_groups {
                     })
                 })
             )
-            invite_users = list(string) # Users to invite to the access group
+            dynamic_policies = optional(
+                list(
+                    object({
+                        name              = string # Dynamic group name
+                        identity_provider = string # URI for identity provider
+                        expiration        = number # How many hours authenticated users can work before refresh
+                        conditions        = object({
+                                claim    = string # key value to evaluate the condition against.
+                                operator = string # The operation to perform on the claim. Supported values are EQUALS, EQUALS_IGNORE_CASE, IN, NOT_EQUALS_IGNORE_CASE, NOT_EQUALS, and CONTAINS.
+                                value    = string # Value to be compared agains
+                        })
+                    })
+                )
+            )
+            account_management_policies = optional(list(string)) # A list of roles for account management to add
+            invite_users                = list(string)           # Users to invite to the access group
         })
     )
     default     = [
@@ -86,7 +101,20 @@ variable access_groups {
                     roles = ["Editor","Manager"]
                 },
             ]
-            invite_users = [ "test@test.test" ]
+            dynamic_policies = [
+                {
+                    name              = "newrule"
+                    expiration        = 4
+                    identity_provider = "test-idp.com"
+                    conditions = {
+                        claim    = "blueGroups"
+                        operator = "CONTAINS"
+                        value    = "https://idp.example.org/SAML2"
+                    }
+                }
+            ]
+            account_management_policies = [ "Viewer" ]
+            invite_users                = [ "test@test.test" ]
         },
         {
             name        = "admin_default"
@@ -118,6 +146,7 @@ variable access_groups {
             ]
             invite_users = [ "test@test.test" ]
         }
+        
     ]
 }
 

@@ -2,3 +2,5 @@ terraform.tfvars
 .terraform.*
 .terraform/
 .DS_Store
+terraform.tfstate
+terraform.tfstate.backup
