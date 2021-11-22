@@ -1,6 +1,6 @@
-# GCAT IAM Access Policies
+# Create and invite multiple access policies and groups
 
-This module creates any number if IAM Access Groups, and IAM Access Policies for those groups. It also allows users to invite users to the account and add them to any of the access groups created.
+This module creates any number of IAM Access Groups, and IAM Access Policies for those groups. It also allows users to invite users to the account and add them to any of the access groups created.
 
 ## Variables
 
@@ -11,13 +11,13 @@ ibmcloud_api_key | string                                                       
 ibm_region       | string                                                                                                                                                                                                                                                                                                             | IBM Cloud region where all resources will be deployed                        |           | eu-de
 access_groups    | See [access groups example](##access-groups-example) | A list of access groups to create                                            |           | See [access groups example](##access-groups-example)
 
-## Access Groups Example
+## Access groups example
 
-The flexible `access_groups` variable allows users to dynamically create groups with complex rules using a single object. This uses the expirimental `module_variable_optional_attrs` module to allow for optional variables in a typed object.
+The flexible `access_groups` variable allows users to dynamically create groups with complex rules using a object. This uses the experimental `module_variable_optional_attrs` module to allow for optional variables in a typed object.
 
-### Varable Type
+### Varable type
 
-```hcl
+```terraform
     list(
         object({
             name        = string # Name of the group
@@ -54,9 +54,9 @@ The flexible `access_groups` variable allows users to dynamically create groups 
     )
 ```
 
-### Variable Default
+### Variable default
 
-```hcl
+```terraform
     [
         {
             name        = "admin"
