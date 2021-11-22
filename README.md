@@ -1,4 +1,4 @@
-# Create and invite multiple access policies and groups
+# Create multiple access policies in access groups and invite users
 
 This module creates any number of IAM Access Groups, and IAM Access Policies for those groups. It also allows users to invite users to the account and add them to any of the access groups created.
 
